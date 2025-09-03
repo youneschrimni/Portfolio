@@ -1,0 +1,87 @@
+<div class="content-wrapper">
+  <!-- Titre + choix du semestre -->
+  <section class="header">
+    <h1>Compétences par semestre</h1>
+    <p class="lead">Sélectionnez un semestre pour voir les compétences (UE) correspondantes, leurs preuves et mon auto-évaluation.</p>
+
+    <div class="toolbar">
+      <button
+        *ngFor="let s of semesters"
+        class="chip"
+        [class.active]="s.id === current.id"
+        (click)="setSem(s)">
+        {{ s.id }}
+      </button>
+    </div>
+  </section>
+
+  <!-- Info semestre -->
+  <section class="semester-info">
+    <div class="semester-header">
+      <h2>{{ current.label }}</h2>
+      <p class="semester-desc">
+        UE affichées :
+        <ng-container *ngFor="let code of current.ueCodes; let last = last">
+          UE{{ code }}<span *ngIf="!last">, </span>
+        </ng-container>
+      </p>
+    </div>
+
+    <div *ngIf="current.resources?.length" class="resources-overview">
+      <h3>Ressources du semestre</h3>
+      <div class="resources-grid">
+        <div class="resource-item" *ngFor="let r of current.resources">
+          <span class="resource-code">{{ r[0] }}</span>
+          <span class="resource-name">{{ r[1] }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compétences du semestre sélectionné -->
+  <section class="competencies-grid">
+    <article
+      *ngFor="let comp of current.comps"
+      class="competency-card"
+      [ngClass]="compCss(comp)">
+      <div class="card-header">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3>UE{{ ueCode(current.id, comp) }} — Compétence {{ comp }} : {{ compTitle(comp) }}</h3>
+      </div>
+
+      <div class="card-content">
+        <!-- Synthèse -->
+        <div class="section-block summary-block" *ngIf="getSummary(comp, current.id)">
+          <h4>Synthèse ({{ summaryTitle(current.id) }})</h4>
+          <p class="summary-text">{{ getSummary(comp, current.id) }}</p>
+        </div>
+
+        <!-- SAÉ & preuves -->
+        <div class="section-block evidence-block">
+          <h4>SAÉ & preuves</h4>
+          <ul class="evidence-list">
+            <li *ngFor="let ev of getEvidence(comp, current.id)">
+              <a *ngIf="ev.link && ev.link !== '#'" [href]="ev.link" target="_blank" rel="noopener">{{ ev.title }}</a>
+              <span *ngIf="!ev.link || ev.link === '#'" class="nolink">{{ ev.title }}</span>
+              <span class="badge">{{ ev.type }}</span>
+            </li>
+            <!-- <li *ngIf="getEvidence(comp, current.id).length === 0" class="empty">— À compléter —</li> -->
+          </ul>
+        </div>
+
+        <!-- Auto-évaluation -->
+        <div class="section-block reflection-block">
+          <h4>Auto-évaluation</h4>
+          <ul class="reflection-list">
+            <li *ngFor="let r of getReflection(comp, current.id)">{{ r }}</li>
+            <!-- <li *ngIf="getReflection(comp, current.id).length === 0" class="empty">— À compléter par toi —</li> -->
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>

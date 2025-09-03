@@ -1,0 +1,90 @@
+/* ---- Header ---- */
+.header { padding-bottom: 20px; text-align: center; }
+.header h1 { font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.025em; }
+.header .lead { font-size: 1.125rem; color: #64748b; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.toolbar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; font-weight: 500; font-size: 14px; cursor: pointer; transition: all .2s; }
+.chip:hover { background: #f8fafc; border-color: #cbd5e1; }
+.chip.active { background: #3b82f6; color: #fff; border-color: #3b82f6; box-shadow: 0 2px 4px rgba(59,130,246,.2); }
+
+/* ---- Wrapper ---- */
+.content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; background: #fff; }
+
+/* ---- Semestre ---- */
+.semester-info { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.semester-header { margin-bottom: 16px; }
+.semester-header h2 { font-size: 1.7rem; font-weight: 700; color: #1e293b; margin: 0 0 6px; }
+.semester-desc { font-size: 0.95rem; color: #64748b; margin: 0; }
+
+/* ---- Ressources ---- */
+.resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+.resource-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; }
+.resource-code { font-weight: 700; color: #3b82f6; font-size: 13px; min-width: 64px; }
+.resource-name { color: #475569; font-size: 14px; }
+
+/* ---- Grid compétences ---- */
+.competencies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
+.competency-card { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; transition: all .2s; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.competency-card:hover { box-shadow: 0 6px 16px rgba(0,0,0,.08); transform: translateY(-1px); }
+.card-header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid #f1f5f9; }
+.card-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 8px; color: #fff; }
+.card-header h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0; }
+.card-content { padding: 18px 20px; }
+
+/* ---- Sections ---- */
+.section-block { margin-top: 16px; }
+.section-block h4 { margin: 0 0 8px; font-size: .95rem; font-weight: 700; color: #374151; }
+.summary-text { color: #374151; font-size: 14px; line-height: 1.6; }
+.evidence-list, .reflection-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.evidence-list li, .reflection-list li { display: flex; align-items: center; gap: 8px; color: #475569; font-size: 14px; }
+.evidence-list a { color: #1d4ed8; text-decoration: none; }
+.evidence-list a:hover { text-decoration: underline; }
+.badge { margin-left: auto; display: inline-block; padding: 2px 8px; font-size: 12px; font-weight: 700; border-radius: 9999px; background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; }
+.empty { color: #94a3b8; font-style: italic; }
+.nolink { color: #334155; }
+
+/* ---- Couleurs par compétence ---- */
+.realiser { border-left: 4px solid #10b981; }
+.realiser .card-icon { background: #10b981; }
+
+.optimiser { border-left: 4px solid #f59e0b; }
+.optimiser .card-icon { background: #f59e0b; }
+
+.administrer { border-left: 4px solid #8b5cf6; }
+.administrer .card-icon { background: #8b5cf6; }
+
+.gerer { border-left: 4px solid #3b82f6; }
+.gerer .card-icon { background: #3b82f6; }
+
+.conduire { border-left: 4px solid #ef4444; }
+.conduire .card-icon { background: #ef4444; }
+
+.collaborer { border-left: 4px solid #06b6d4; }
+.collaborer .card-icon { background: #06b6d4; }
+
+@media (max-width: 768px) {
+  .header h1 { font-size: 2rem; }
+  .content-wrapper { padding: 16px; }
+  .semester-info { padding: 18px; }
+  .card-header, .card-content { padding: 16px; }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--subtext);
+    background: var(--tint-blue);
+    box-shadow: inset 0 0 0 1px rgba(43,92,255,.22);
+}
+
+.badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent-2);
+    box-shadow: 0 0 0 3px rgba(128,167,255,.25);
+}

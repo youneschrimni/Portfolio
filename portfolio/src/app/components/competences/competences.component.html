@@ -1,87 +1,146 @@
 <div class="content-wrapper">
-  <!-- Titre + choix du semestre -->
+  <!-- Header Section -->
   <section class="header">
-    <h1>Compétences par semestre</h1>
-    <p class="lead">Sélectionnez un semestre pour voir les compétences (UE) correspondantes, leurs preuves et mon auto-évaluation.</p>
-
-    <div class="toolbar">
-      <button
-        *ngFor="let s of semesters"
-        class="chip"
-        [class.active]="s.id === current.id"
-        (click)="setSem(s)">
-        {{ s.id }}
-      </button>
+    <div class="header-content">
+      <h1>Compétences techniques</h1>
+      <p class="lead">Une expertise polyvalente en développement web, intelligence artificielle et outils modernes acquise au fil de mes projets académiques et professionnels.</p>
     </div>
   </section>
 
-  <!-- Info semestre -->
-  <section class="semester-info">
-    <div class="semester-header">
-      <h2>{{ current.label }}</h2>
-      <p class="semester-desc">
-        UE affichées :
-        <ng-container *ngFor="let code of current.ueCodes; let last = last">
-          UE{{ code }}<span *ngIf="!last">, </span>
-        </ng-container>
-      </p>
+  <!-- Programming Languages Section -->
+  <section class="skills-section">
+    <h3 class="section-title">Langages de programmation</h3>
+    <div class="skills-grid">
+      <article class="skill-card" *ngFor="let lang of programmingLanguages">
+        <div class="skill-header">
+          <div class="skill-icon" [style.background]="lang.color">
+            <span class="skill-symbol">{{ lang.symbol }}</span>
+          </div>
+          <h4>{{ lang.name }}</h4>
+        </div>
+        <div class="skill-level">
+          <div class="level-bar">
+            <div class="level-fill" [style.width.%]="lang.level" [style.background]="lang.color"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Frameworks & Libraries Section -->
+  <section class="skills-section">
+    <h3 class="section-title">Frameworks & Bibliothèques</h3>
+    
+    <!-- Frontend -->
+    <div class="category-subsection">
+      <h4 class="category-title">
+        <span class="category-icon">🎨</span>
+        Frontend
+      </h4>
+      <div class="tech-tags">
+        <span class="tech-tag frontend" *ngFor="let tech of frontendFrameworks">{{ tech }}</span>
+      </div>
     </div>
 
-    <div *ngIf="current.resources?.length" class="resources-overview">
-      <h3>Ressources du semestre</h3>
-      <div class="resources-grid">
-        <div class="resource-item" *ngFor="let r of current.resources">
-          <span class="resource-code">{{ r[0] }}</span>
-          <span class="resource-name">{{ r[1] }}</span>
+    <!-- Backend -->
+    <div class="category-subsection">
+      <h4 class="category-title">
+        <span class="category-icon">⚙️</span>
+        Backend
+      </h4>
+      <div class="tech-tags">
+        <span class="tech-tag backend" *ngFor="let tech of backendFrameworks">{{ tech }}</span>
+      </div>
+    </div>
+
+    <!-- Intelligence Artificielle -->
+    <div class="category-subsection">
+      <h4 class="category-title">
+        <span class="category-icon">🤖</span>
+        Intelligence Artificielle
+      </h4>
+      <div class="tech-tags">
+        <span class="tech-tag ai" *ngFor="let tech of aiFrameworks">{{ tech }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools & Technologies Section -->
+  <section class="skills-section">
+    <h3 class="section-title">Outils & Technologies</h3>
+    <div class="tools-grid">
+      <article class="tool-card" *ngFor="let tool of tools">
+        <div class="tool-icon-wrapper">
+          <div class="tool-icon" [style.background]="tool.color">
+            {{ tool.icon }}
+          </div>
+        </div>
+        <h5>{{ tool.name }}</h5>
+        <p class="tool-description">{{ tool.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Databases Section -->
+  <section class="skills-section">
+    <h3 class="section-title">Bases de données</h3>
+    <div class="database-grid">
+      <div class="database-card sql">
+        <div class="db-header">
+          <div class="db-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <h4>SQL</h4>
+        </div>
+        <div class="db-tech">
+          <span class="db-tag">MySQL</span>
+          <span class="db-tag">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="database-card nosql">
+        <div class="db-header">
+          <div class="db-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h4>NoSQL</h4>
+        </div>
+        <div class="db-tech">
+          <span class="db-tag">MongoDB</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Compétences du semestre sélectionné -->
-  <section class="competencies-grid">
-    <article
-      *ngFor="let comp of current.comps"
-      class="competency-card"
-      [ngClass]="compCss(comp)">
-      <div class="card-header">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
-        <h3>UE{{ ueCode(current.id, comp) }} — Compétence {{ comp }} : {{ compTitle(comp) }}</h3>
-      </div>
+  <!-- Soft Skills Section -->
+  <section class="skills-section soft-skills-section">
+    <h3 class="section-title">Qualités professionnelles</h3>
+    <div class="soft-skills-grid">
+      <article class="soft-skill-card" *ngFor="let skill of softSkills">
+        <div class="soft-skill-icon">{{ skill.icon }}</div>
+        <h5>{{ skill.name }}</h5>
+        <p>{{ skill.description }}</p>
+      </article>
+    </div>
+  </section>
 
-      <div class="card-content">
-        <!-- Synthèse -->
-        <div class="section-block summary-block" *ngIf="getSummary(comp, current.id)">
-          <h4>Synthèse ({{ summaryTitle(current.id) }})</h4>
-          <p class="summary-text">{{ getSummary(comp, current.id) }}</p>
-        </div>
-
-        <!-- SAÉ & preuves -->
-        <div class="section-block evidence-block">
-          <h4>SAÉ & preuves</h4>
-          <ul class="evidence-list">
-            <li *ngFor="let ev of getEvidence(comp, current.id)">
-              <a *ngIf="ev.link && ev.link !== '#'" [href]="ev.link" target="_blank" rel="noopener">{{ ev.title }}</a>
-              <span *ngIf="!ev.link || ev.link === '#'" class="nolink">{{ ev.title }}</span>
-              <span class="badge">{{ ev.type }}</span>
-            </li>
-            <!-- <li *ngIf="getEvidence(comp, current.id).length === 0" class="empty">— À compléter —</li> -->
-          </ul>
-        </div>
-
-        <!-- Auto-évaluation -->
-        <div class="section-block reflection-block">
-          <h4>Auto-évaluation</h4>
-          <ul class="reflection-list">
-            <li *ngFor="let r of getReflection(comp, current.id)">{{ r }}</li>
-            <!-- <li *ngIf="getReflection(comp, current.id).length === 0" class="empty">— À compléter par toi —</li> -->
-          </ul>
-        </div>
-      </div>
-    </article>
+  <!-- Languages Section -->
+  <section class="skills-section">
+    <h3 class="section-title">Langues</h3>
+    <div class="languages-grid">
+      <article class="language-card" *ngFor="let language of languages">
+        <div class="language-flag">{{ language.flag }}</div>
+        <h5>{{ language.name }}</h5>
+        <span class="language-level" [class]="language.levelClass">{{ language.level }}</span>
+      </article>
+    </div>
   </section>
 </div>

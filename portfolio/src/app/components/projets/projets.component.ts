@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 interface Project {
   id: string;
@@ -22,6 +25,8 @@ type Semester = 'Tous' | 'S3' | 'S4' | 'S5' | 'S6';
 
 @Component({
   selector: 'app-projets',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './projets.component.html',
   styleUrls: ['./projets.component.css']
 })

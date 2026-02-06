@@ -8,7 +8,6 @@
 
   <section class="filters-section">
     <div class="filters-wrapper">
-      <!-- Filtres par semestre -->
       <div class="filter-group">
         <label class="filter-label">Semestre</label>
         <div class="semester-chips">
@@ -22,7 +21,6 @@
         </div>
       </div>
 
-      <!-- Barre de recherche -->
       <div class="filter-group search-group">
         <label class="filter-label">Recherche</label>
         <div class="search-input-wrapper">
@@ -38,7 +36,6 @@
         </div>
       </div>
 
-      <!-- Tri -->
       <div class="filter-group">
         <label class="filter-label">Tri</label>
         <select class="sort-select" [(ngModel)]="order">
@@ -48,7 +45,6 @@
       </div>
     </div>
 
-    <!-- Compteur de résultats -->
     <div class="results-count">
       <span class="count">{{ filtered.length }}</span> projet{{ filtered.length > 1 ? 's' : '' }} trouvé{{ filtered.length > 1 ? 's' : '' }}
     </div>
@@ -145,7 +141,6 @@
     </article>
   </main>
 
-  <!-- Message si aucun résultat -->
   <div class="no-results" *ngIf="filtered.length === 0">
     <svg class="no-results-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <circle cx="11" cy="11" r="8"></circle>

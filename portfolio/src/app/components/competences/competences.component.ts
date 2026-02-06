@@ -36,6 +36,7 @@ interface Language {
   styleUrls: ['./competences.component.css'],
 })
 export class CompetencesComponent {
+  
   programmingLanguages: ProgrammingLanguage[] = [
     { name: 'JavaScript', symbol: 'JS', color: '#F7DF1E', level: 85 },
     { name: 'TypeScript', symbol: 'TS', color: '#3178C6', level: 85 },
@@ -44,17 +45,18 @@ export class CompetencesComponent {
     { name: 'PHP', symbol: 'PHP', color: '#777BB4', level: 70 },
     { name: 'HTML/CSS', symbol: '<>', color: '#E34F26', level: 90 },
     { name: 'Bash', symbol: '$', color: '#4EAA25', level: 65 },
+    { name: 'SQL', symbol: 'SQL', color: '#336791', level: 75 },
   ];
 
-  frontendFrameworks: string[] = ['Angular', 'Vue.js'];
+  frontendFrameworks: string[] = ['Angular', 'Vue.js', "React"];
   
-  backendFrameworks: string[] = ['Spring Boot', 'Flask', 'Node.js'];
+  backendFrameworks: string[] = ['Spring Boot', 'Flask', 'Node.js (Express)', "REST API"];
   
   aiFrameworks: string[] = ['TensorFlow', 'Hugging Face', 'Keras', 'LangChain'];
 
   tools: Tool[] = [
     {
-      name: 'GitLab',
+      name: 'GitLab/Github',
       icon: '🦊',
       color: '#FC6D26',
       description: 'Gestion de versions et CI/CD'
@@ -101,6 +103,18 @@ export class CompetencesComponent {
       color: '#FFD21E',
       description: 'Déploiement de modèles IA'
     },
+    {
+      name: "Postman",
+      icon: "",
+      color: '#ff961e',
+      description: 'Requetes vers api'
+    },
+    {
+      name: "Nginx",
+      icon: "",
+      color: '#1eff1e',
+      description: 'Reverse-proxy'
+    }
   ];
 
   softSkills: SoftSkill[] = [
@@ -130,13 +144,7 @@ export class CompetencesComponent {
     {
       name: 'Anglais',
       flag: '🇬🇧',
-      level: 'Niveau professionnel',
-      levelClass: 'level-high'
-    },
-    {
-      name: 'Arabe',
-      flag: '🇲🇦',
-      level: 'C1',
+      level: 'Niveau B2 TOEIC 845',
       levelClass: 'level-high'
     },
     {

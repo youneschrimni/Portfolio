@@ -132,14 +132,38 @@ export class ProjetsComponent {
         'Interface conversationnelle',
         'Mémoire de projet'
       ],
-      results: 'Assistant virtuel capable de répondre à plus de 500 questions automobiles',
+      results: 'Assistant virtuel capable de répondre à plus de 500 questions automobiles. (Limite de token sur hugging face donc peut ne pas fonctionner quand vous essayerez)',
       value: "Le développement du ChatBot Automobile Intelligent m'a permis d'approfondir mes compétences en intelligence artificielle et en traitement du langage naturel (NLP), en plus de renforcer mes connaissances en développement web avec Angular pour l'interface et Flask pour le backend. Ce projet m'a introduit à des technologies avancées de l'IA, notamment la compréhension et la génération de réponses contextuelles basées sur des questions automobiles. Cette expérience m'a permis de comprendre l'importance de l'intégration d'algorithmes d'IA dans des applications concrètes et d'affiner mes compétences en programmation Python, en particulier dans le domaine du Machine Learning et du NLP. Ce projet a véritablement aiguisé mon intérêt pour l'IA, me poussant à explorer davantage ce domaine et à développer des compétences techniques qui sont aujourd'hui essentielles pour une carrière dans la tech.",
       links: {
         github: 'https://github.com/youneschrimni/ChatBotAutomobile',
         demo: 'http://217.154.22.108/home',
         pdf: 'assets/Rapport_ChatbotAutomobile.pdf'
       }
+    },
+    {
+    id: 'S6-02',
+    semester: 'S6',
+    title: 'Ticket Manager (type Jira)',
+    objective: "Développement d’une application web de gestion de projets et de tickets : création de projets, tickets (statut, priorité), commentaires et suivi de l’avancement avec contrôle d’accès.",
+    duration: "2 semaines",
+    team: "Tout seul",
+    tools: ['React (Vite)', 'Node.js (Express)', 'Prisma', 'PostgreSQL', 'JWT', 'GitHub Actions', 'PM2', 'VPS Linux'],
+    deliverables: [
+      'Application web full-stack (front + API)',
+      'API REST sécurisée (JWT + routes protégées)',
+      'Mots de passe hashés (bcrypt/argon2) et gestion de sessions stateless',
+      'Base de données PostgreSQL modélisée avec Prisma (migrations)',
+      'Pipeline CI/CD GitHub Actions : build/test + déploiement automatique sur VPS',
+      'Documentation technique + guide d’installation/déploiement'
+    ],
+    results: "Application fonctionnelle déployée sur VPS avec déploiement automatique à chaque push sur main, et gestion complète du cycle de vie des tickets (création, priorisation, changement de statut, commentaires).",
+    value: "Ce projet m’a permis de concevoir une application full-stack proche d’un outil comme Jira, en couvrant tout le cycle de développement : modélisation des données (Prisma/PostgreSQL), création d’une API Node.js sécurisée (JWT, hash des mots de passe, protection des routes et contrôle d’accès), et développement d’une interface React claire pour gérer projets et tickets. Le point clé du projet est la mise en place d’un pipeline CI/CD sur GitHub Actions, qui automatise le build et le déploiement sur mon VPS (PM2), ce qui m’a fait travailler des pratiques proches de la production : gestion des variables d’environnement, déploiement fiable, et mises à jour continues sans intervention manuelle.",
+    links: {
+      github: 'https://github.com/youneschrimni/ticket-manager',
+      demo: 'http://91.230.110.234/'
     }
+}
+
   ];
 
   /**
